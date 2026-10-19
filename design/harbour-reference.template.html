@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Irish Ports — Home (Theme 6: Harbour)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 var(--font-b);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+[hidden]{display:none!important}
+.wrap{width:min(1240px,100% - 48px);margin:0 auto}
+h1,h2,h3,h4,p,ul,figure,blockquote{margin:0}
+h1,h2{font-family:var(--font-h);font-weight:var(--hw);color:var(--heading);letter-spacing:var(--h-track);text-wrap:balance}
+h2.title{font-size:var(--h2);line-height:1.1;margin-bottom:36px;text-align:var(--h-align)}
+h2.title.left{text-align:left;margin-bottom:20px}
+h3{font-size:17px;line-height:1.3;color:var(--heading);font-weight:650}
+p{color:var(--muted)}
+p+p,ul+p,p+ul{margin-top:14px}
+.strong{color:var(--text);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:var(--btn-radius);background:var(--accent);color:var(--accent-ink);text-decoration:none;font:700 15px/1.2 var(--font-b);border:0;cursor:pointer;transition:filter .15s,transform .15s}
+.btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.btn.sm{padding:10px 18px;font-size:14px;margin-top:auto;align-self:flex-start}
+.btn.alt-btn{background:var(--btn2-bg);color:var(--btn2-ink)}
+.btn.ghost{background:transparent;color:var(--hero-text);border:1px solid #ffffff59}
+.chev{font-size:18px;line-height:1}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+.util{background:var(--util-bg);color:var(--util-text);font-size:13px;padding:9px 0;text-align:center}
+.util b{color:var(--util-hi);font-weight:600;white-space:nowrap}
+.util a{text-decoration:none}
+header{position:sticky;top:0;z-index:20;background:var(--hd-bg);border-bottom:1px solid var(--hd-line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:28px;height:92px}
+.brand{flex:none;display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo{height:70px;width:70px;display:block}
+.logo.big{height:110px;width:110px}
+.wordmark{line-height:1.05;color:#fff;font-weight:800;font-size:19px;letter-spacing:.04em}
+.wordmark small{display:block;margin-top:5px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--util-hi)}
+nav{display:flex;align-items:center;gap:4px;font-size:14.5px;font-weight:500;color:var(--hd-text)}
+nav a{text-decoration:none;white-space:nowrap;padding:9px 11px;border-radius:var(--btn-radius)}
+nav a:hover{color:var(--hd-hover)}
+nav a.on{background:var(--accent);color:var(--accent-ink);font-weight:700}
+.menu{display:none;background:none;border:1px solid var(--hd-text);color:var(--hd-text);border-radius:var(--btn-radius);padding:9px 16px;font:600 14px var(--font-b);cursor:pointer}
+
+.hero{background:var(--hero-bg);padding:84px 0;border-bottom:1px solid var(--hd-line)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+h1{font-size:var(--h1);line-height:1.12;color:var(--hero-text)}
+.hero p{color:var(--hero-sub);font-size:17px;margin:22px 0 28px}
+.hero-text:before{content:"";display:block;width:56px;height:4px;background:var(--accent);margin-bottom:26px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;list-style:none;padding:0}
+.chips li{font-size:12.5px;font-weight:600;color:var(--hero-sub);border:1px solid #ffffff2e;border-radius:999px;padding:5px 12px}
+.video{aspect-ratio:16/10;border-radius:var(--radius);border:1px solid var(--video-line);display:grid;place-items:center;position:relative;overflow:hidden;background:var(--video-bg)}
+.video img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.video:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#08294300 45%,#082943b3)}
+.play{position:relative;z-index:1;width:76px;height:76px;border-radius:50%;background:var(--accent);display:grid;place-items:center;box-shadow:0 0 0 10px #d4ad6340}
+.play svg{width:30px;height:30px;fill:var(--accent-ink);margin-left:4px}
+.vlabel{position:absolute;z-index:1;left:18px;bottom:14px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#fff;font-weight:600}
+
+section{padding:88px 0}
+.alt{background:var(--alt)}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 36px #08294317}
+.card>img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.card .body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card .body p{font-size:14.5px;margin:0}
+.after{text-align:center;margin-top:36px}
+.sub{text-align:var(--h-align);margin:-18px 0 28px;max-width:760px}
+.ico{width:46px;height:46px;border-radius:12px;background:var(--ico-bg);color:var(--link);display:grid;place-items:center;margin-top:-47px;border:3px solid var(--surface);position:relative}
+.ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.duo>div{padding-right:44px}
+.duo>div+div{padding:0 0 0 44px;border-left:1px solid var(--line)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.split p{font-size:15.5px}
+.pic{width:100%;border-radius:var(--radius);border:1px solid var(--line)}
+.pic+.btn{margin-top:18px}
+.split .btn{font-size:14px;padding:12px 16px}
+.dots{list-style:none;padding:0;margin-top:16px}
+.dots li{position:relative;padding:5px 0 5px 28px;font-size:15px;color:var(--muted)}
+.dots li:before{content:"";position:absolute;left:6px;top:15px;width:6px;height:6px;border-radius:50%;background:var(--tick)}
+.soon{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--soon)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.stats div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px}
+.stats b{display:block;font-size:24px;line-height:1.1;color:var(--heading);letter-spacing:-.02em}
+.stats span{font-size:12.5px;color:var(--muted)}
+
+/* conference poster */
+.poster{position:relative;border-radius:var(--radius);overflow:hidden;color:#fff;padding:64px 26px 30px;background:radial-gradient(ellipse at 80% 0%,#d4ad6340,transparent 55%),linear-gradient(160deg,#0b4664,#082943 70%);border:1px solid #0b4664;min-height:100%}
+.poster .soon{color:var(--accent)}
+.poster h3{color:#fff;font-size:24px;line-height:1.15;margin:10px 0 18px;font-weight:700;letter-spacing:-.02em}
+.poster dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:14px}
+.poster dt{color:#9fc3d1;font-weight:600}
+.poster dd{margin:0;color:#fff}
+.poster .stamp{position:absolute;right:-30px;top:20px;transform:rotate(8deg);background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:8px 40px 8px 18px}
+.contact-list{list-style:none;padding:0;margin-top:16px}
+.contact-list li{font-size:15px;color:var(--text);padding:4px 0}
+.contact-list a{color:var(--link);text-decoration:none;font-weight:600}
+
+.band{background:var(--band-bg);padding:34px 0}
+.band .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.band h2{color:var(--band-text);font-size:clamp(22px,2.4vw,30px)}
+.band p{color:#b8d0da;margin-top:4px;font-size:15px}
+.band .btn{background:var(--band-btn);color:var(--band-btn-ink)}
+
+.tabs{display:flex;justify-content:var(--tabs-justify);flex-wrap:wrap;gap:6px;margin-bottom:28px;font-weight:600;font-size:15px}
+.tabs button{font:inherit;background:none;border:0;cursor:pointer;padding:10px 18px;border-radius:var(--btn-radius);color:var(--muted)}
+.tabs button:hover{color:var(--heading)}
+.tabs button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.event>img{aspect-ratio:16/8}
+.event h3{font-size:18px}
+.meta{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;color:var(--muted);margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
+.meta .left{color:var(--tick);font-weight:600}
+.card.host{background:var(--btn2-bg);border-color:var(--btn2-bg);justify-content:center}
+.card.host .body{justify-content:center}
+.card.host h3{color:#fff;font-size:20px}
+.card.host p{color:#b8d0da}
+.card.host .btn{margin-top:8px}
+.empty{grid-column:1/-1;text-align:center;padding:48px 24px;background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius)}
+
+.minister{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.portrait{aspect-ratio:4/3;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(140deg,#eaf1f4,#d7e2e9);display:grid;place-items:center;position:relative}
+.portrait b{width:120px;height:120px;border-radius:50%;background:var(--btn2-bg);color:var(--accent);display:grid;place-items:center;font-size:40px;letter-spacing:.02em}
+.portrait span{position:absolute;left:16px;bottom:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--soon);margin-bottom:10px}
+.minister p a{color:var(--link);font-weight:600}
+
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.quotes figure{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:20px}
+blockquote{font-size:15px;color:var(--muted)}
+figcaption{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-weight:600;color:var(--text)}
+.who{display:flex;align-items:center;gap:10px}
+.who i{width:36px;height:36px;border-radius:50%;background:var(--ico-bg);color:var(--link);display:grid;place-items:center;font-style:normal;font-size:13px;font-weight:700}
+.stars{color:var(--star);letter-spacing:2px}
+
+.contact{display:grid;grid-template-columns:1.6fr 1fr;gap:64px;align-items:center}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;background:var(--form-bg);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.form label{display:block;font-weight:600;font-size:14px;color:var(--text)}
+.form label i{color:#d2232a;font-style:normal}
+.form .full{grid-column:1/-1}
+.form input,.form textarea{display:block;width:100%;margin-top:7px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--btn-radius);background:var(--field);color:var(--text);font:inherit}
+.form input:focus,.form textarea:focus{outline:2px solid var(--link);outline-offset:1px;border-color:var(--link)}
+.captcha{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:var(--btn-radius);background:var(--field);padding:12px 14px;width:max-content;max-width:100%;font-size:14px;color:var(--text)}
+.captcha span{width:22px;height:22px;border:2px solid #9aabb8;border-radius:3px;background:#fff}
+.captcha small{color:var(--muted);font-size:11px;margin-left:18px}
+.form .btn{justify-self:start}
+.form-note{grid-column:1/-1;font-size:14px;color:var(--tick);font-weight:600;min-height:1em}
+.contact aside{text-align:center}
+.contact aside .title{text-align:center;margin-bottom:16px}
+.contact aside .kicker{color:var(--text)}
+.or{color:var(--muted);margin:20px 0}
+
+.logos-col{text-align:center}
+.logos-col .title{text-align:center}
+.logos{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:32px}
+.logo-slot{height:64px;min-width:170px;padding:0 22px;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);border-radius:8px;color:var(--muted);font-size:13px;font-weight:600}
+.karcher{background:#ffed00;border-color:#ffed00;color:#111;font:800 22px/1 Arial,sans-serif;letter-spacing:.02em}
+
+footer{background:var(--foot-bg);color:var(--foot-text);padding:60px 0 28px;font-size:14.5px}
+.foot{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:40px}
+.foot h4{color:var(--foot-h);font:var(--hw) 19px var(--font-h);margin-bottom:14px}
+.foot a,.foot span{display:block;text-decoration:none;padding:3px 0}
+.foot a:hover{color:var(--foot-h)}
+.foot p{color:var(--foot-text);margin-top:16px;max-width:320px}
+.legal{border-top:1px solid #ffffff1f;margin-top:36px;padding-top:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}
+.legal a{color:var(--accent);text-decoration:none}
+.theme-pill{position:fixed;left:16px;bottom:16px;z-index:30;background:var(--btn2-bg);color:#fff;font-size:12.5px;font-weight:600;text-decoration:none;padding:8px 14px;border-radius:999px;box-shadow:0 8px 20px #0829434d;border:1px solid #ffffff26}
+
+@media(max-width:1279px){
+  .menu{display:block}
+  nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;gap:2px;background:var(--hd-bg);padding:12px 24px 22px;border-bottom:1px solid var(--hd-line)}
+  nav a{font-size:16px}
+  .open nav{display:flex}
+}
+@media(max-width:1100px){
+  .cards3{grid-template-columns:1fr 1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div,.duo>div+div{padding:0;border:0}
+  .duo>div+div{margin-top:64px}
+  .hero-grid,.contact,.minister{grid-template-columns:1fr;gap:40px}
+  .quotes{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .wrap{width:min(1240px,100% - 32px)}
+  section{padding:60px 0}.hero{padding:56px 0}
+  .bar{height:76px}.logo{height:54px;width:54px}.wordmark{font-size:16px}
+  .cards3,.split,.form,.foot,.stats{grid-template-columns:1fr}
+  .util{font-size:12px}
+  .form{padding:22px}
+  .legal{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+
+/* Theme — Harbour: navy / teal / gold, matched to the UK Ports Harbour mockup */
+:root{--font-h:Inter,"Segoe UI",Arial,sans-serif;--font-b:Inter,"Segoe UI",Arial,sans-serif;--hw:700;--h-track:-.03em;--h-align:left;--tabs-justify:flex-start;
+--h1:clamp(30px,3.6vw,48px);--h2:clamp(26px,2.8vw,36px);
+--bg:#f5f8fa;--surface:#fff;--alt:#eaf1f4;--text:#102d42;--muted:#5a6f80;--heading:#082943;--link:#0d6f91;--line:#d7e2e9;--ico-bg:#e3f0f4;
+--accent:#d4ad63;--accent-ink:#152f40;--btn2-bg:#082943;--btn2-ink:#fff;--radius:14px;--btn-radius:6px;
+--tick:#118094;--soon:#9a7537;--star:#d4ad63;
+--util-bg:#061f33;--util-text:#b8d7e3;--util-hi:#d4ad63;
+--hd-bg:#082943;--hd-text:#dceaf0;--hd-hover:#fff;--hd-line:#ffffff1a;
+--hero-bg:linear-gradient(115deg,#082943 0%,#0b4664 64%,#117a95 100%);--hero-text:#fff;--hero-sub:#cfe3ea;
+--video-bg:#ffffff12;--video-line:#ffffff2e;
+--band-bg:#082943;--band-text:#fff;--band-btn:#d4ad63;--band-btn-ink:#152f40;
+--form-bg:#fff;--field:#f5f8fa;
+--foot-bg:#082943;--foot-text:#b8d0da;--foot-h:#fff}
+h2.title:before{content:"";display:block;width:44px;height:3px;background:var(--accent);margin-bottom:16px}
+.contact aside .title:before,.logos-col .title:before{margin-left:auto;margin-right:auto}
+.card,.quotes figure,.form{box-shadow:0 10px 30px #0829430d}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="iplogo" viewBox="0 0 200 200">
+    <defs>
+      <clipPath id="ip-clip"><circle cx="100" cy="100" r="58"/></clipPath>
+      <radialGradient id="ip-shade" cx=".38" cy=".3" r=".85">
+        <stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".25"/>
+      </radialGradient>
+      <path id="ip-arc" d="M34 100A66 66 0 0 1 166 100"/>
+      <path id="ip-arc2" d="M40 112A61 61 0 0 0 160 112"/>
+    </defs>
+    <circle cx="100" cy="100" r="92" fill="#169b62"/>
+    <circle cx="100" cy="100" r="92" fill="none" stroke="#fff" stroke-width="3" opacity=".6"/>
+    <circle cx="100" cy="100" r="62" fill="#fff"/>
+    <g clip-path="url(#ip-clip)">
+      <rect x="42" y="42" width="39" height="116" fill="#169b62"/>
+      <rect x="81" y="42" width="38" height="116" fill="#fff"/>
+      <rect x="119" y="42" width="39" height="116" fill="#ff883e"/>
+      <g fill="#0f7a4a">
+        <circle cx="100" cy="86" r="10"/><circle cx="89" cy="100" r="10"/><circle cx="111" cy="100" r="10"/>
+        <path d="M99 104 Q98 122 92 130 L96 131 Q103 121 103 104Z"/>
+      </g>
+      <circle cx="100" cy="100" r="58" fill="url(#ip-shade)"/>
+    </g>
+    <text font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="15" letter-spacing="2" fill="#fff"><textPath href="#ip-arc" startOffset="50%" text-anchor="middle">IRISH PORTS</textPath></text>
+    <text font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="12" letter-spacing="2.4" fill="#fff"><textPath href="#ip-arc2" startOffset="50%" text-anchor="middle">ORGANISATION</textPath></text>
+  </symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></symbol>
+  <symbol id="i-web" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4M10 8.5v5l4-2.5z"/></symbol>
+  <symbol id="i-ship" viewBox="0 0 24 24"><path d="M3 17l2 4h14l2-4-9-3z"/><path d="M6 15V9h12v6M12 9V4M9 6h6"/><path d="M2 21c2 0 2-1 4-1s2 1 4 1 2-1 4-1 2 1 4 1 2-1 4-1"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4zM20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z"/></symbol>
+</svg>
+
+<div class="util"><div class="wrap">For membership or upcoming port meetings, call us on <b><a href="tel:0731228556">0731 228 556</a></b> | email <b><a href="mailto:faria@irishports.com">faria@irishports.com</a></b></div></div>
+
+<header><div class="wrap bar">
+  <a class="brand" href="#" aria-label="Irish Ports home"><svg class="logo" viewBox="0 0 200 200" role="img" aria-label="Irish Ports Organisation logo"><use href="#iplogo"/></svg><span class="wordmark">IRISH PORTS<small>Organisation</small></span></a>
+  <button class="menu" aria-expanded="false" aria-controls="mainnav">Menu</button>
+  <nav id="mainnav" aria-label="Main">
+    <a class="on" href="#">Home</a><a href="#">News</a><a href="#events">Events &amp; Webinars</a><a href="#offer">Ports Directory</a><a href="#">Media Pack</a><a href="#partners">Suppliers</a><a href="#about">Membership</a><a href="#">Ports <span aria-hidden="true">▾</span></a><a href="#contact">Contact</a>
+  </nav>
+</div></header>
+
+<div class="hero"><div class="wrap hero-grid">
+  <div class="hero-text">
+    <h1>Irish Ports Are Open For Business Now!</h1>
+    <p>Irish Ports are a Leading Trade Organisation supporting Irish Ports Freeports, Marine, Renewables, Shipping, Training, Transport, Research and promoting sustainable Technology including Hydrogen.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#contact">Join The Irish Ports <span class="chev" aria-hidden="true">›</span></a>
+      <a class="btn ghost" href="#offer">Explore the Ports Directory</a>
+    </div>
+    <ul class="chips" aria-label="Sectors we support"><li>Freeports</li><li>Marine</li><li>Renewables</li><li>Shipping</li><li>Training</li><li>Transport</li><li>Hydrogen</li></ul>
+  </div>
+  <div class="video" role="img" aria-label="Irish Ports video — aerial view of a container port">
+    <img src="{{img:hero.jpg}}" alt="">
+    <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+    <span class="vlabel">Irish Ports video</span>
+  </div>
+</div></div>
+
+<main>
+<section class="alt" id="about"><div class="wrap duo">
+  <div>
+    <h2 class="title">About Us</h2>
+    <div class="split">
+      <div>
+        <p class="strong">The Irish Ports Organisation is the countrywide membership body for ports in Ireland.</p>
+        <p>We represent &amp; support the operators that deal with 90% of all Irish Ports cargo, ships &amp; sea freight to the Republic &amp; Northern Ireland.</p>
+        <p>Irish Ports membership comprises of many ports, terminal operators, ports services companies and ports facilities.</p>
+      </div>
+      <div>
+        <img class="pic" src="{{img:D:/Bill_Website/uk_ports_mockup_assets/sector1.jpg}}" alt="Two port professionals talking at a marina">
+        <a class="btn" href="#">Read More <span class="chev" aria-hidden="true">›</span></a>
+      </div>
+    </div>
+    <div class="stats">
+      <div><b>90%</b><span>of Irish port cargo handled by operators we represent</span></div>
+      <div><b>ROI &amp; NI</b><span>Republic &amp; Northern Ireland coverage</span></div>
+      <div><b>4</b><span>member types: ports, terminals, services, facilities</span></div>
+    </div>
+  </div>
+  <div>
+    <h2 class="title">Irish Ports Conference and Exhibition 2026</h2>
+    <div class="split">
+      <div>
+        <p>Join ports, operators, suppliers and decision-makers from across Ireland for the flagship Irish Ports gathering of the year.</p>
+        <ul class="contact-list">
+          <li><b>Tel:</b> <a href="tel:0731228556">0731 228 556</a></li>
+          <li><b>Web:</b> <a href="#">www.irishports.com</a></li>
+          <li><b>Email:</b> <a href="mailto:faria@irishports.com">faria@irishports.com</a></li>
+        </ul>
+      </div>
+      <div class="poster">
+        <div class="soon">Coming soon</div>
+        <h3>Conference &amp; Exhibition 2026</h3>
+        <dl><dt>Date</dt><dd>TBA</dd><dt>Time</dt><dd>TBA</dd><dt>Venue</dt><dd>Shelbourne Hotel, Dublin</dd></dl>
+        <span class="stamp">Stay tuned</span>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="offer"><div class="wrap">
+  <h2 class="title">What We Offer</h2>
+  <div class="cards3">
+    <article class="card"><img src="{{img:D:/Bill_Website/uk_ports_mockup_assets/sector4.jpg}}" alt="Delegates networking at a maritime event"><div class="body"><span class="ico"><svg><use href="#i-cal"/></svg></span><h3>Events</h3><p>The Irish Ports Meetings and Events initiative is a dedicated platform facilitating crucial gatherings within the maritime community.</p><a class="btn sm" href="#events">Read More <span class="chev" aria-hidden="true">›</span></a></div></article>
+    <article class="card"><img src="{{img:D:/Bill_Website/uk_ports_mockup_assets/service4.jpg}}" alt="Person joining a webinar on a laptop"><div class="body"><span class="ico"><svg><use href="#i-web"/></svg></span><h3>Webinars</h3><p>The Irish Ports Webinar Service is a comprehensive platform designed to provide valuable insights, updates, and knowledge sharing within the maritime and port industry in Ireland.</p><a class="btn sm" href="#events">Read More <span class="chev" aria-hidden="true">›</span></a></div></article>
+    <article class="card"><img src="{{img:D:/Bill_Website/uk_ports_mockup_assets/sector2.jpg}}" alt="Port workers in high-visibility clothing operating a drone"><div class="body"><span class="ico"><svg><use href="#i-ship"/></svg></span><h3>Ports Directory</h3><p>The Irish Ports Quarterly Directory serves as a vital compendium for the maritime sector, offering a comprehensive overview of the diverse and dynamic landscape of ports in Ireland.</p><a class="btn sm" href="#">Read More <span class="chev" aria-hidden="true">›</span></a></div></article>
+  </div>
+</div></section>
+
+<div class="band"><div class="wrap">
+  <div><h2>Irish Ports Conference &amp; Exhibition 2026</h2><p>Shelbourne Hotel, Dublin · Date to be announced</p></div>
+  <a class="btn" href="#contact">REGISTER YOUR INTEREST</a>
+</div></div>
+
+<section class="alt" id="services"><div class="wrap">
+  <h2 class="title">Additional Services</h2>
+  <div class="cards3">
+    <article class="card"><img src="{{img:D:/Bill_Website/uk_ports_mockup_assets/service3.jpg}}" alt="Business people checking updates on phones and a laptop"><div class="body"><span class="ico"><svg><use href="#i-mail"/></svg></span><h3>Monitored Email Activity</h3><p>This service delivers timely and relevant updates directly to members' inboxes via Irish Ports email, ensuring they stay abreast of critical information such as industry regulations, operational changes, and emerging trends.</p><a class="btn sm" href="#">Read More <span class="chev" aria-hidden="true">›</span></a></div></article>
+    <article class="card"><img src="{{img:D:/Bill_Website/uk_ports_mockup_assets/service1.jpg}}" alt="Analyst working with marine data dashboards"><div class="body"><span class="ico"><svg><use href="#i-chart"/></svg></span><h3>Focused Marine Data</h3><p>Irish Ports offers a specialized service that empowers its members with the capability to access and utilize focused marine data for strategic decision-making.</p><a class="btn sm" href="#">Read More <span class="chev" aria-hidden="true">›</span></a></div></article>
+    <article class="card"><img src="{{img:D:/Bill_Website/uk_ports_mockup_assets/service2.jpg}}" alt="Person reading a maritime magazine"><div class="body"><span class="ico"><svg><use href="#i-book"/></svg></span><h3>Quarterly Magazine for Non-members</h3><p>Accessing the Irish Ports Quarterly Directory is your gateway to a wealth of information.</p><a class="btn sm" href="#">Read More <span class="chev" aria-hidden="true">›</span></a></div></article>
+  </div>
+</div></section>
+
+<section id="events"><div class="wrap">
+  <h2 class="title">Upcoming Events &amp; Webinars</h2>
+  <p class="sub">Meet, Engage &amp; Showcase Your Products &amp; Services With The Irish Ports In 2026-27 #NETZERO2050</p>
+  <div class="tabs" role="tablist" aria-label="Event types">
+    <button role="tab" id="t-ev" aria-selected="true" aria-controls="p-ev">Events</button>
+    <button role="tab" id="t-wb" aria-selected="false" aria-controls="p-wb" tabindex="-1">Webinars</button>
+    <button role="tab" id="t-host" aria-selected="false" aria-controls="p-host" tabindex="-1">Looking To Host Your Own Event/Webinar?</button>
+  </div>
+  <div class="cards3" role="tabpanel" id="p-ev" aria-labelledby="t-ev">
+    <article class="card event"><img src="{{img:dublin_sm.jpg}}" alt="Container terminal at a busy port"><div class="body"><h3>Port of Dublin</h3><div class="meta"><span>TBA</span><span class="left">6 Places Left</span></div></div></article>
+    <article class="card event"><img src="{{img:harbour_sm.jpg}}" alt="Ships berthed at a harbour pier"><div class="body"><h3>Irish Ports Conference &amp; Exhibition 2026 — Shelbourne Hotel, Dublin</h3><div class="meta"><span>TBA</span><span>Registration opening soon</span></div></div></article>
+    <article class="card host"><div class="body"><h3>Looking to host your own event?</h3><p>Showcase your port, products or services to the Irish Ports community.</p><a class="btn sm" href="#contact">Get In Touch <span class="chev" aria-hidden="true">›</span></a></div></article>
+  </div>
+  <div class="cards3" role="tabpanel" id="p-wb" aria-labelledby="t-wb" hidden>
+    <div class="empty"><h3>New webinars coming soon</h3><p>Our 2026-27 webinar schedule will be announced shortly. Contact us to be notified first.</p></div>
+  </div>
+  <div class="cards3" role="tabpanel" id="p-host" aria-labelledby="t-host" hidden>
+    <div class="empty"><h3>Host an event or webinar with Irish Ports</h3><p>Reach ports, terminal operators and maritime suppliers across Ireland. Tell us about your idea and we'll help you plan it.</p><p style="margin-top:18px"><a class="btn" href="#contact">Enquire Now <span class="chev" aria-hidden="true">›</span></a></p></div>
+  </div>
+  <div class="after"><a class="btn" href="#">Browse All Events &amp; Webinars <span class="chev" aria-hidden="true">›</span></a></div>
+</div></section>
+
+<section class="alt" id="minister"><div class="wrap minister">
+  <div class="portrait" role="img" aria-label="Photo placeholder for Minister Seán Canney"><b>SC</b><span>Photo placeholder</span></div>
+  <div>
+    <div class="kicker">Our Ports Minister</div>
+    <h2 class="title left">Minister Seán Canney</h2>
+    <p>Seán Canney is Minister of State at the Department of Transport with responsibility for International and Road Transport, Logistics, Rail and Ports.</p>
+    <p>He was appointed to this role in January 2025.</p>
+    <p>You can contact Mr Canney at <a href="mailto:ministercanney@transport.gov.ie">ministercanney@transport.gov.ie</a></p>
+  </div>
+</div></section>
+
+<section id="clients"><div class="wrap">
+  <h2 class="title">What Our Clients Say</h2>
+  <p class="sub">Reviews from some of our clients</p>
+  <div class="quotes">
+    <figure><blockquote>I recently had the pleasure of experiencing the outstanding services provided by Irish Ports, and I am compelled to share my exceptional experience. From start to finish, the efficiency and professionalism demonstrated by the entire Irish Ports team surpassed my expectations. The first thing that struck me was the seamless communication throughout the entire process. They took the time to address my concerns and ensured I was well-informed about the entire port operation.</blockquote><figcaption><span class="who"><i>JF</i>Jack Fallon</span><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></figcaption></figure>
+    <figure><blockquote>As a frequent user of port facilities, I can confidently attest to the excellence exhibited by the entire Irish Ports team. From the outset, the professionalism displayed by Irish Ports is noteworthy. The staff, led by knowledgeable and courteous individuals, ensured that my interactions were not just transactions but personalized experiences. Their dedication to customer service was evident in every step of the process, making me feel valued and well taken care of.</blockquote><figcaption><span class="who"><i>PO</i>Patrick O'Reilly</span><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></figcaption></figure>
+    <figure><blockquote>I am thrilled to express my utmost satisfaction with Irish Ports, an organization that has not only met but exceeded my expectations in the realm of maritime services. My recent experiences with them have been nothing short of exceptional. The professionalism and friendliness of the entire team, led by knowledgeable experts, made navigating the complexities of port logistics a breeze. Their attention to detail left a lasting impression on me.</blockquote><figcaption><span class="who"><i>SB</i>Seamous Burns</span><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></figcaption></figure>
+  </div>
+</div></section>
+
+<section class="alt" id="contact"><div class="wrap contact">
+  <form class="form" novalidate>
+    <label>Name <i>*</i><input type="text" required autocomplete="name"></label>
+    <label>Email <i>*</i><input type="email" required autocomplete="email"></label>
+    <label>Telephone <i>*</i><input type="tel" required autocomplete="tel"></label>
+    <label>Company <i>*</i><input type="text" required autocomplete="organization"></label>
+    <label class="full">Message<textarea rows="6"></textarea></label>
+    <div class="full"><div class="captcha" aria-label="reCAPTCHA placeholder"><span></span>I'm not a robot<small>reCAPTCHA</small></div></div>
+    <button class="btn" type="submit">Send Message</button>
+    <p class="form-note" role="status"></p>
+  </form>
+  <aside>
+    <div class="kicker">Have any question?</div>
+    <h2 class="title">Contact Us</h2>
+    <p>If you have any questions or require further information, please get in touch, we'd love to hear from you.</p>
+    <div class="or">— or —</div>
+    <a class="btn" href="#about">Join The Irish Ports <span class="chev" aria-hidden="true">›</span></a>
+  </aside>
+</div></section>
+
+<section id="partners"><div class="wrap logos-col">
+  <h2 class="title">Irish Ports Official Partners</h2>
+  <div class="logos">
+    <span class="logo-slot karcher" aria-label="Kärcher">KÄRCHER</span>
+    <span class="logo-slot">Partner logo</span>
+    <span class="logo-slot">Partner logo</span>
+    <span class="logo-slot">Partner logo</span>
+  </div>
+  <a class="btn alt-btn" href="#">Browse All Suppliers <span class="chev" aria-hidden="true">›</span></a>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="foot">
+    <div><svg class="logo big" viewBox="0 0 200 200" role="img" aria-label="Irish Ports Organisation logo"><use href="#iplogo"/></svg><p>Direct Access to the Most Reliable and Trusted Irish Ports Suppliers.</p></div>
+    <div><h4>Pages</h4><a href="#">Home</a><a href="#offer">Ports Directory</a><a href="#about">Membership</a><a href="#contact">Contact</a><a href="#">Terms &amp; Conditions</a></div>
+    <div><h4>Events</h4><a href="#">Ports Directory</a><a href="#partners">Suppliers List</a><a href="#">World Ports</a></div>
+    <div><h4>Company Info</h4><span>Irish Ports Organisation Ltd</span><a href="tel:0731228556">Tel: 0731 228 556</a><a href="mailto:faria@irishports.com">faria@irishports.com</a><a href="#">www.irishports.com</a></div>
+  </div>
+  <!-- <div class="legal"><span>© 2026 Irish Ports Organisation Ltd · <a href="#">Privacy</a> · <a href="#">Accessibility</a></span><span>Designed, Developed &amp; Maintained By <a href="#">Compile UK Limited</a></span></div> -->
+</div></footer>
+
+<a class="theme-pill" href="index.html">Theme 6 · Harbour (UK Ports style) ← all themes</a>
+
+<script>
+document.querySelector(".menu").onclick=e=>{const b=e.currentTarget,o=b.closest("header").classList.toggle("open");b.setAttribute("aria-expanded",o)};
+const tabs=[...document.querySelectorAll('[role="tab"]')];
+function sel(t){tabs.forEach(x=>{const on=x===t;x.setAttribute("aria-selected",on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute("aria-controls")).hidden=!on});t.focus()}
+tabs.forEach((t,i)=>{t.onclick=()=>sel(t);t.onkeydown=e=>{if(e.key==="ArrowRight")sel(tabs[(i+1)%tabs.length]);if(e.key==="ArrowLeft")sel(tabs[(i-1+tabs.length)%tabs.length])}});
+document.querySelector(".form").onsubmit=e=>{e.preventDefault();e.target.querySelector(".form-note").textContent="Thanks — this is a mockup, so nothing was sent."};
+</script>
+</body>
+</html>
