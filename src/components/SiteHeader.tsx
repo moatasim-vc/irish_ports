@@ -2,13 +2,33 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Logo from "@/components/Logo";
 import { linkHref, mainNav, type NavItem } from "@/content/site";
 
 export default function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  // Label of the desktop dropdown that is showing, if any.
+  const [dropdown, setDropdown] = useState<string | null>(null);
+  const navRef = useRef<HTMLElement>(null);
+
+  // Close the dropdown on a click outside the nav or on Escape.
+  useEffect(() => {
+    if (!dropdown) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (!navRef.current?.contains(e.target as Node)) setDropdown(null);
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setDropdown(null);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [dropdown]);
 
   // A built page is active on its own URL and on any URL below it (e.g. /events/port-of-dublin).
   const isActive = (item: NavItem) =>
@@ -39,6 +59,7 @@ export default function SiteHeader() {
 
         <nav
           id="main-nav"
+          ref={navRef}
           aria-label="Main"
           className={`${
             open ? "flex" : "hidden"
@@ -65,16 +86,31 @@ export default function SiteHeader() {
               );
             }
 
-            // Dropdown on desktop (hover or keyboard focus); indented list in the mobile menu.
+            // Dropdown on desktop (mouse hover, or click/keyboard to toggle); indented list in the mobile menu.
             // The parent only opens the list, as "Ports" has no page of its own.
+            const shown = dropdown === item.label;
             return (
-              <div key={item.label} className="group xl:relative">
-                <button type="button" aria-haspopup="true" className={`flex cursor-pointer items-center ${itemClass}`}>
+              <div
+                key={item.label}
+                className="xl:relative"
+                onPointerEnter={(e) => e.pointerType === "mouse" && setDropdown(item.label)}
+                onPointerLeave={(e) => e.pointerType === "mouse" && setDropdown(null)}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget)) setDropdown(null);
+                }}
+              >
+                <button
+                  type="button"
+                  aria-haspopup="true"
+                  aria-expanded={shown}
+                  onClick={() => setDropdown(shown ? null : item.label)}
+                  className={`flex cursor-pointer items-center ${itemClass}`}
+                >
                   {item.label}
                   <svg
                     viewBox="0 0 12 12"
                     aria-hidden="true"
-                    className="ml-1.5 size-2.5 transition-transform duration-200 xl:group-focus-within:rotate-180 xl:group-hover:rotate-180"
+                    className={`ml-1.5 size-2.5 ${shown ? "transition-transform duration-200 xl:rotate-180" : ""}`}
                     fill="none"
                     stroke="currentColor"
                     strokeWidth={2}
@@ -85,7 +121,14 @@ export default function SiteHeader() {
                   </svg>
                 </button>
                 {/* The outer box starts flush under the button so the pointer never leaves the hover area. */}
-                <div className="xl:invisible xl:absolute xl:top-full xl:right-0 xl:w-[260px] xl:translate-y-1 xl:pt-3 xl:opacity-0 xl:transition-[opacity,transform,visibility] xl:duration-200 xl:group-focus-within:visible xl:group-focus-within:translate-y-0 xl:group-focus-within:opacity-100 xl:group-hover:visible xl:group-hover:translate-y-0 xl:group-hover:opacity-100">
+                <div
+                  // Fades in on open; closes instantly so it never lingers.
+                  className={`xl:absolute xl:top-full xl:right-0 xl:w-[260px] xl:pt-3 ${
+                    shown
+                      ? "xl:visible xl:translate-y-0 xl:opacity-100 xl:transition-[opacity,transform] xl:duration-200"
+                      : "xl:invisible xl:translate-y-1 xl:opacity-0"
+                  }`}
+                >
                   <ul className="relative pl-4 xl:overflow-visible xl:rounded-xl xl:border xl:border-t-[3px] xl:border-line xl:border-t-gold xl:bg-white xl:p-2 xl:text-ink xl:shadow-[0_22px_48px_rgb(8_41_67/0.28)]">
                     {item.children.map((child) => {
                       const current = isActive(child);
@@ -94,7 +137,10 @@ export default function SiteHeader() {
                           <Link
                             href={linkHref(child)}
                             aria-current={current ? "page" : undefined}
-                            onClick={() => setOpen(false)}
+                            onClick={() => {
+                              setOpen(false);
+                              setDropdown(null);
+                            }}
                             className={`group/item flex items-center justify-between gap-4 rounded-lg px-[11px] py-2 whitespace-nowrap hover:text-white xl:px-3.5 xl:py-3 xl:text-[15px] xl:font-semibold xl:hover:bg-mist xl:hover:text-navy ${
                               current ? "text-gold xl:bg-mist xl:text-navy" : ""
                             }`}
