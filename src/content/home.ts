@@ -93,13 +93,13 @@ export const offer = {
   ] satisfies ImageCard[],
 };
 
-// Recommended new section from the handover. The button points at News until a
-// dedicated Projects & Investment page exists.
+// Recommended new section from the handover. The button goes to the dedicated
+// Top 20 projects page (content/projects.ts).
 export const projects = {
   kicker: "Projects & Investment",
   title: "Ireland’s Port Projects",
   text: "Explore 20 major port and maritime projects across Ireland. See what’s underway, what’s planned and how investment is shaping the next chapter for ports and coastal communities.",
-  cta: { label: "View the Top 20 Projects", href: "/news" },
+  cta: { label: "View the Top 20 Projects", href: "/projects" },
   /** Banner photo (with its CC credit) from content/banners.ts. */
   banner: "ports-directory" as BannerKey,
   alt: "Container ship being loaded by cranes at an Irish port",
