@@ -16,8 +16,8 @@ export default function Contact() {
           </SectionTitle>
           <p className="text-muted">{contactSection.text}</p>
           <p className="my-5 text-muted">— or —</p>
-          <Link className="btn" href="/membership">
-            {contactSection.cta} <Chevron />
+          <Link className="btn" href={contactSection.cta.href}>
+            {contactSection.cta.label} <Chevron />
           </Link>
         </aside>
       </div>

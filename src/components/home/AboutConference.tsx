@@ -1,14 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 import Chevron from "@/components/Chevron";
 import SectionTitle from "@/components/SectionTitle";
 import { about, conference } from "@/content/home";
-import { contact, telHref } from "@/content/site";
 
 export default function AboutConference() {
   return (
     <section id="about" className="section bg-mist">
       <div className="wrap grid lg:grid-cols-2">
         <div className="lg:pr-11">
+          <p className="kicker mb-2.5">{about.kicker}</p>
           <SectionTitle>{about.title}</SectionTitle>
           <div className="grid items-start gap-7 sm:grid-cols-2">
             <div className="text-[15.5px] text-muted [&>p+p]:mt-3.5">
@@ -25,12 +26,12 @@ export default function AboutConference() {
                 height={270}
                 className="w-full rounded-card border border-line"
               />
-              <a className="btn mt-[18px] px-4 py-3 text-sm" href="#">
-                {about.cta} <Chevron />
-              </a>
+              <Link className="btn mt-[18px] px-4 py-3 text-sm" href={about.cta.href}>
+                {about.cta.label} <Chevron />
+              </Link>
             </div>
           </div>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-3">
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             {about.stats.map((stat) => (
               <li key={stat.value} className="rounded-[10px] border border-line bg-white p-3.5">
                 <b className="block text-2xl leading-[1.1] tracking-[-0.02em] text-navy">{stat.value}</b>
@@ -45,23 +46,9 @@ export default function AboutConference() {
           <div className="grid items-start gap-7 sm:grid-cols-2">
             <div>
               <p className="text-[15.5px] text-muted">{conference.intro}</p>
-              <ul className="mt-4 text-[15px]">
-                <li className="py-1">
-                  <b>Tel:</b>{" "}
-                  <a className="font-semibold text-teal" href={telHref(contact.phone)}>
-                    {contact.phone}
-                  </a>
-                </li>
-                <li className="py-1">
-                  <b>Web:</b> <span className="font-semibold text-teal">{contact.website}</span>
-                </li>
-                <li className="py-1">
-                  <b>Email:</b>{" "}
-                  <a className="font-semibold text-teal" href={`mailto:${contact.email}`}>
-                    {contact.email}
-                  </a>
-                </li>
-              </ul>
+              <Link className="btn mt-[18px] px-4 py-3 text-sm" href={conference.cta.href}>
+                {conference.cta.label} <Chevron />
+              </Link>
             </div>
 
             <div className="relative h-full overflow-hidden rounded-card border border-navy-mid bg-[radial-gradient(ellipse_at_80%_0%,#d4ad6340,transparent_55%),linear-gradient(160deg,#0b4664,#082943_70%)] px-[26px] pt-16 pb-[30px] text-white">

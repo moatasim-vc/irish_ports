@@ -10,7 +10,7 @@ export type NavItem = {
 
 export const mainNav: NavItem[] = [
   { label: "Home", href: "/", ready: true },
-  { label: "News", href: "/news", ready: true },
+  { label: "News & Projects", href: "/news", ready: true },
   { label: "Events & Webinars", href: "/events", ready: true },
   { label: "Ports Directory", href: "/ports-directory", ready: true },
   { label: "Media Pack", href: "/media-pack", ready: true },
@@ -32,16 +32,16 @@ export const mainNav: NavItem[] = [
 
 export const footerPages: NavItem[] = [
   { label: "Home", href: "/", ready: true },
+  { label: "News & Projects", href: "/news", ready: true },
   { label: "Ports Directory", href: "/ports-directory", ready: true },
   { label: "Membership", href: "/membership", ready: true },
   { label: "Contact", href: "/contact", ready: true },
-  { label: "Terms & Conditions", href: "/terms" },
 ];
 
-export const footerEvents: NavItem[] = [
-  { label: "Ports Directory", href: "/ports-directory", ready: true },
-  { label: "Suppliers List", href: "/suppliers", ready: true },
-  { label: "World Ports", href: "/world-ports", ready: true },
+export const footerIndustryLinks: NavItem[] = [
+  { label: "Suppliers", href: "/suppliers", ready: true },
+  { label: "Events & Webinars", href: "/events", ready: true },
+  { label: "Media Pack", href: "/media-pack", ready: true },
 ];
 
 /** Pages that aren't built yet link to "#" so they don't 404. */
@@ -53,7 +53,7 @@ export const contact = {
   email: "faria@irishports.com",
   website: "www.irishports.com",
   company: "Irish Ports Organisation Ltd",
-  footerText: "Direct Access to the Most Reliable and Trusted Irish Ports Suppliers.",
+  footerText: "Connecting Ireland’s ports and maritime community.",
 };
 
 export const telHref = (number: string) => `tel:${number.replace(/[^\d+]/g, "")}`;
@@ -62,13 +62,9 @@ export type Partner = {
   name: string;
   /** Logo image path. Without one, the name is shown as text. */
   logo?: string;
-  /** Empty slot that holds space for a partner still to be confirmed. */
-  placeholder?: boolean;
 };
 
+// Only list partners whose logos have been approved for use.
 export const partners: Partner[] = [
   { name: "Kärcher", logo: "/images/partners/karcher.png" },
-  { name: "Partner logo", placeholder: true },
-  { name: "Partner logo", placeholder: true },
-  { name: "Partner logo", placeholder: true },
 ];

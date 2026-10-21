@@ -20,11 +20,11 @@ export default function Hero() {
           </h1>
           <p className="mt-[22px] mb-7 text-[17px] text-hero-sub">{hero.text}</p>
           <div className="flex flex-wrap gap-3">
-            <Link className="btn" href="/membership">
-              {hero.cta} <Chevron />
+            <Link className="btn" href={hero.cta.href}>
+              {hero.cta.label} <Chevron />
             </Link>
-            <Link className="btn btn-ghost" href="/ports-directory">
-              {hero.secondaryCta}
+            <Link className="btn btn-ghost" href={hero.secondaryCta.href}>
+              {hero.secondaryCta.label}
             </Link>
           </div>
           <ul aria-label="Sectors we support" className="mt-[30px] flex flex-wrap gap-2">

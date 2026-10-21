@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
-import { contact, footerEvents, footerPages, linkHref, telHref, type NavItem } from "@/content/site";
+import { contact, footerIndustryLinks, footerPages, linkHref, telHref, type NavItem } from "@/content/site";
 
 function LinkColumn({ title, items }: { title: string; items: NavItem[] }) {
   return (
@@ -25,7 +25,7 @@ export default function SiteFooter() {
             <p className="mt-4 max-w-[320px]">{contact.footerText}</p>
           </div>
           <LinkColumn title="Pages" items={footerPages} />
-          <LinkColumn title="Events" items={footerEvents} />
+          <LinkColumn title="Industry Links" items={footerIndustryLinks} />
           <div>
             <h4 className="mb-3.5 text-[19px] font-bold text-white">Company Info</h4>
             <span className="block py-[3px]">{contact.company}</span>

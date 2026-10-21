@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Chevron from "@/components/Chevron";
 import SectionTitle from "@/components/SectionTitle";
 import { testimonials } from "@/content/home";
 
@@ -34,6 +36,11 @@ export default function Testimonials() {
               </figcaption>
             </figure>
           ))}
+        </div>
+        <div className="mt-9 text-center">
+          <Link className="btn" href={testimonials.cta.href}>
+            {testimonials.cta.label} <Chevron />
+          </Link>
         </div>
       </div>
     </section>

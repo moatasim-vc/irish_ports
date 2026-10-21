@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Chevron from "@/components/Chevron";
 import SectionTitle from "@/components/SectionTitle";
 import { minister } from "@/content/home";
 
@@ -23,18 +24,12 @@ export default function Minister() {
             </>
           )}
         </div>
-        <div className="text-muted [&>p+p]:mt-3.5">
-          <p className="kicker mb-2.5">{minister.kicker}</p>
-          <SectionTitle className="mb-5">{minister.name}</SectionTitle>
-          {minister.paragraphs.map((text) => (
-            <p key={text}>{text}</p>
-          ))}
-          <p>
-            You can contact Mr Canney at{" "}
-            <a className="font-semibold text-teal underline" href={`mailto:${minister.email}`}>
-              {minister.email}
-            </a>
-          </p>
+        <div className="text-muted">
+          <SectionTitle className="mb-5">{minister.title}</SectionTitle>
+          <p>{minister.text}</p>
+          <a className="btn mt-7" href={minister.cta.href}>
+            {minister.cta.label} <Chevron />
+          </a>
         </div>
       </div>
     </section>

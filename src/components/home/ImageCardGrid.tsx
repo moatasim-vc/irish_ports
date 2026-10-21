@@ -9,13 +9,13 @@ import type { ImageCard } from "@/content/home";
 export default function ImageCardGrid({
   id,
   title,
-  cta,
+  subtitle,
   cards,
   className = "",
 }: {
   id: string;
   title: string;
-  cta: string;
+  subtitle?: string;
   cards: ImageCard[];
   className?: string;
 }) {
@@ -23,6 +23,7 @@ export default function ImageCardGrid({
     <section id={id} className={`section ${className}`}>
       <div className="wrap">
         <SectionTitle>{title}</SectionTitle>
+        {subtitle && <p className="-mt-[18px] mb-7 max-w-[760px] text-muted">{subtitle}</p>}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((card) => (
             <article key={card.title} className="card">
@@ -39,8 +40,8 @@ export default function ImageCardGrid({
                 </span>
                 <h3 className="text-[17px] leading-[1.3] font-semibold text-navy">{card.title}</h3>
                 <p className="text-[14.5px] text-muted">{card.text}</p>
-                <Link className="btn btn-sm mt-auto self-start" href={card.href ?? "#"}>
-                  {cta} <Chevron />
+                <Link className="btn btn-sm mt-auto self-start" href={card.cta.href}>
+                  {card.cta.label} <Chevron />
                 </Link>
               </div>
             </article>

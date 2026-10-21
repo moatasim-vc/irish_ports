@@ -4,11 +4,12 @@ import Chevron from "@/components/Chevron";
 import SectionTitle from "@/components/SectionTitle";
 import Tabs from "@/components/Tabs";
 import EmptyPanel from "@/components/events/EmptyPanel";
-import { eventHref, eventItems, eventsPage, tabs } from "@/content/events";
+import { eventHref, eventItems, eventsPage } from "@/content/events";
 import { events } from "@/content/home";
 
 export default function Events() {
-  const { webinars, host } = eventsPage;
+  const { webinars } = eventsPage;
+  const { host, tabs } = events;
 
   const eventsPanel = (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -26,11 +27,11 @@ export default function Events() {
       ))}
       <article className="card justify-center border-navy bg-navy">
         <div className="flex flex-col gap-3 p-6">
-          <h3 className="text-xl font-semibold text-white">{events.hostCard.title}</h3>
-          <p className="text-on-navy">{events.hostCard.text}</p>
-          <a className="btn btn-sm mt-2 self-start" href="#contact">
-            {events.hostCard.cta} <Chevron />
-          </a>
+          <h3 className="text-xl font-semibold text-white">{host.title}</h3>
+          <p className="text-on-navy">{host.text}</p>
+          <Link className="btn btn-sm mt-2 self-start" href={host.cta.href}>
+            {host.cta.label} <Chevron />
+          </Link>
         </div>
       </article>
     </div>
@@ -51,9 +52,9 @@ export default function Events() {
               label: tabs[2],
               panel: (
                 <EmptyPanel title={host.title} text={host.text}>
-                  <a className="btn mt-[18px]" href="#contact">
-                    {host.cta} <Chevron />
-                  </a>
+                  <Link className="btn mt-[18px]" href={host.cta.href}>
+                    {host.cta.label} <Chevron />
+                  </Link>
                 </EmptyPanel>
               ),
             },
@@ -61,8 +62,8 @@ export default function Events() {
         />
 
         <div className="mt-9 text-center">
-          <Link className="btn" href="/events">
-            {events.cta} <Chevron />
+          <Link className="btn" href={events.cta.href}>
+            {events.cta.label} <Chevron />
           </Link>
         </div>
       </div>
